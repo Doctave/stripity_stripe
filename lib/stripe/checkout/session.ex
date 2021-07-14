@@ -89,6 +89,10 @@ defmodule Stripe.Session do
           optional(:trial_period_days) => integer()
         }
 
+  @type tax_id_collection :: %{
+          :enabled => boolean()
+        }
+
   @type create_params :: %{
           :cancel_url => String.t(),
           :payment_method_types => list(String.t()),
@@ -101,7 +105,8 @@ defmodule Stripe.Session do
           optional(:locale) => String.t(),
           optional(:metadata) => Stripe.Types.metadata(),
           optional(:payment_intent_data) => payment_intent_data,
-          optional(:subscription_data) => subscription_data
+          optional(:subscription_data) => subscription_data,
+          optional(:tax_id_collection) => tax_id_collection
         }
 
   @type t :: %__MODULE__{
@@ -130,6 +135,7 @@ defmodule Stripe.Session do
           submit_type: String.t() | nil,
           subscription: Stripe.id() | Stripe.Subscription.t() | nil,
           success_url: String.t(),
+          tax_id_collection: tax_id_collection(),
           url: String.t()
         }
 
@@ -154,6 +160,7 @@ defmodule Stripe.Session do
     :submit_type,
     :subscription,
     :success_url,
+    :tax_id_collection,
     :url
   ]
 
