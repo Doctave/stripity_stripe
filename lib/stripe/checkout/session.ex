@@ -129,7 +129,8 @@ defmodule Stripe.Session do
           },
           submit_type: String.t() | nil,
           subscription: Stripe.id() | Stripe.Subscription.t() | nil,
-          success_url: String.t()
+          success_url: String.t(),
+          url: String.t()
         }
 
   defstruct [
@@ -152,7 +153,8 @@ defmodule Stripe.Session do
     :shipping_address_collection,
     :submit_type,
     :subscription,
-    :success_url
+    :success_url,
+    :url
   ]
 
   @plural_endpoint "checkout/sessions"
