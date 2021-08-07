@@ -40,8 +40,7 @@ defmodule Stripe.BillingPortal.Configuration do
           :payment_method_update => enabled_hash,
           :subscription_cancel => subscription_cancel,
           :subscription_pause => enabled_hash,
-          :subscription_update => subscription_update,
-          :proration_behavior => proration_behavior
+          :subscription_update => subscription_update
         }
 
   @type customer_update :: %{
@@ -68,7 +67,8 @@ defmodule Stripe.BillingPortal.Configuration do
   @type subscription_update :: %{
           :default_allowed_updates => [subscription_allowed_updates],
           :enabled => boolean(),
-          :products => [product]
+          :products => [product],
+          :proration_behavior => proration_behavior
         }
 
   @type subscription_allowed_updates :: :price | :quantity | :promotion_code
@@ -78,7 +78,7 @@ defmodule Stripe.BillingPortal.Configuration do
           :product => String.t()
         }
 
-  @type proration_behavior :: :none | :create_proration | :always_invoice
+  @type proration_behavior :: :none | :create_prorations | :always_invoice
 
   @type create_params :: %{
           :business_profile => business_profile,
