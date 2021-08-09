@@ -106,7 +106,8 @@ defmodule Stripe.Session do
           optional(:metadata) => Stripe.Types.metadata(),
           optional(:payment_intent_data) => payment_intent_data,
           optional(:subscription_data) => subscription_data,
-          optional(:tax_id_collection) => tax_id_collection
+          optional(:tax_id_collection) => tax_id_collection,
+          optional(:allow_promotion_codes) => boolean()
         }
 
   @type t :: %__MODULE__{
@@ -136,6 +137,7 @@ defmodule Stripe.Session do
           subscription: Stripe.id() | Stripe.Subscription.t() | nil,
           success_url: String.t(),
           tax_id_collection: tax_id_collection(),
+          allow_promotion_codes: boolean(),
           url: String.t()
         }
 
@@ -161,6 +163,7 @@ defmodule Stripe.Session do
     :subscription,
     :success_url,
     :tax_id_collection,
+    :allow_promotion_codes,
     :url
   ]
 
